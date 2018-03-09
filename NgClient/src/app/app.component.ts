@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { HubConnection } from '@aspnet/signalr-client';
+import { HubConnection } from '@aspnet/signalr';
 
 @Component({
   selector: 'app-root',
