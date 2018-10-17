@@ -40,7 +40,7 @@ namespace RealTimeApp
             );
             app.UseSignalR(routes =>
             {
-                routes.MapHub<LoopyHub>("loopy");
+                routes.MapHub<LoopyHub>("/loopy");
             });
 
         }

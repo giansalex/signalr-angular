@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { HubConnection } from '@aspnet/signalr';
+import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +23,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._hubConnection = new HubConnection('http://localhost:64988/loopy');
+    this._hubConnection = new HubConnectionBuilder().withUrl('http://localhost:64988/loopy')
+                            .build();
 
     this._hubConnection.on('Send', (data: any) => {
         const received = `Received: ${data}`;
