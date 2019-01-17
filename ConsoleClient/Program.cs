@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR.Client;
-using Microsoft.AspNetCore.Sockets;
 
 namespace ConsoleClient
 {
@@ -24,7 +23,6 @@ namespace ConsoleClient
         {
             _connection = new HubConnectionBuilder()
                  .WithUrl("http://localhost:64988/loopy")
-                 .WithConsoleLogger()
                  .Build();
 
 
