@@ -7,16 +7,18 @@ namespace ConsoleClient
     class Program
     {
         private static HubConnection _connection;
-        static void Main(string[] args)
+        static async Task  Main(string[] args)
         {
-            StartConnectionAsync().Wait();
+            await StartConnectionAsync();
+            Console.WriteLine("Listenning messages... (Press enter to exit)");
             _connection.On<string>("Send", (message) =>
             {
                 Console.WriteLine($"said: {message}");
             });
+            await _connection.SendCoreAsync("Send", new [] {"Hey from Console!"});
 
             Console.ReadLine();
-            DisposeAsync().Wait();
+            await DisposeAsync();
         }
 
         public static async Task StartConnectionAsync()
